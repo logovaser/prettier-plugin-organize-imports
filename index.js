@@ -89,6 +89,31 @@ const plugin = {
 			category: 'OrganizeImports',
 			description: 'How to sort type imports when mixed in an import statement.',
 		},
+		absolutePathPrefix: {
+			type: 'string',
+			category: 'Global',
+			default: '@/',
+			description: 'Prefix for absolute import paths (e.g., "@/")',
+		},
+		maxRelativePathDepth: {
+			type: 'int',
+			category: 'Global',
+			default: 1,
+			description:
+				'Maximum depth of relative paths before converting to absolute (e.g., 1 means "../" and "./" are preserved)',
+		},
+		tsconfigPath: {
+			type: 'string',
+			category: 'Global',
+			default: '',
+			description: 'Path to tsconfig.json or jsconfig.json (auto-detected if not provided)',
+		},
+		nextjsMode: {
+			type: 'boolean',
+			category: 'Global',
+			default: false,
+			description: 'Enable Next.js 14+ specific optimizations (auto-detected if Next.js is present)',
+		},
 	},
 	parsers: {
 		babel: withOrganizeImportsPreprocess(babelParsers.babel),
